@@ -1,0 +1,861 @@
+<style lang="less">
+page {
+  height: 100%;
+  background-image: url('https://childrensday.algforce.com/image/battle/index/bg.jpg');
+  background-size: cover;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+}
+.bg {
+  width: 100%;
+  height: 600px;
+}
+.title {
+  width: 750rpx;
+  height: 216rpx;
+}
+.header {
+  flex-grow: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.content {
+  width: 750rpx;
+  height: 398rpx;
+  flex-grow: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.game-panel {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-top: -10px;
+  z-index: 10;
+}
+.user-panel {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.host-area,
+.gust-area,
+.vs-area,
+.time-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.time-area-view {
+  display: flex;
+  flex: 1 1 20%;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: -13px;
+}
+.host-person-area,
+.gust-person-area {
+  display: flex;
+  flex: 1 1 40%;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 10px;
+}
+
+.host-word-area,
+.gust-word-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.host-person-word-area,
+.gust-person-word-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.flag {
+  width: 59px;
+  height: 30px;
+}
+.person {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  border: white 2px solid;
+}
+.empty {
+  width: 120rpx;
+  height: 139rpx;
+}
+.word {
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.score-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.score-area {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.scoreword {
+  font-size: 30px;
+  font-weight: bold;
+  color: blue;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.host-person-view,
+.gust-person-view,
+.gust-empty-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin-top: 10px;
+}
+.hide {
+  display: none !important;
+}
+.award-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top: 10px;
+}
+.award-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.award {
+  width: 296rpx;
+  height: 146rpx;
+  margin-left: 15px;
+}
+.award-win {
+  width: 662rpx;
+  height: 146rpx;
+  margin-left: 10px;
+}
+.operate-area {
+  width: 100%;
+  flex-grow: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin-top: 20px;
+}
+.receivebattle-btn {
+  width: 326rpx;
+  height: 86rpx;
+  background-image: url('https://childrensday.algforce.com/image/battle/battleinfo/receivebattle-btn.png');
+  border: 0;
+  background-size: cover;
+  background-color: transparent;
+}
+.wantbattle-btn {
+  width: 326rpx;
+  height: 86rpx;
+  background-image: url('https://childrensday.algforce.com/image/battle/battleinfo/wantbattle-btn.png');
+  border: 0;
+  background-size: cover;
+  background-color: transparent;
+}
+.find-btn {
+  width: 326rpx;
+  height: 86rpx;
+  background-image: url('https://childrensday.algforce.com/image/battle/battleinfo/find-btn.png');
+  border: 0;
+  background-size: cover;
+  background-color: transparent;
+}
+.share-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.share-friend-area,
+.share-timeline-area,
+.new-battle-area {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}
+.share-friend-btn,
+.share-friend-word,
+.share-timeline-btn,
+.share-timeline-word,
+.new-battle-btn,
+.new-battle-word {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.friend {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin: 10rpx;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  background-image: url('https://childrensday.algforce.com/image/worldcup/friend.png');
+}
+
+.shareline {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin: 10rpx;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  background-image: url('https://childrensday.algforce.com/image/worldcup/shareline.png');
+}
+
+.newbattlebtn {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin: 10rpx;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  background-image: url('https://childrensday.algforce.com/image/battle/battleinfo/newbattle-btn.png');
+}
+
+.qrcode-cotent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin-top: 5px;
+}
+.qrcode {
+  width: 150rpx;
+  height: 157rpx;
+}
+.finish-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin-top: -30px;
+}
+.result-panel {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.winner-panel,
+.loser-panel {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.loser-word {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.winner {
+  width: 248rpx;
+  height: 156rpx;
+}
+.loser {
+  width: 104rpx;
+  height: 74rpx;
+}
+.tie {
+  width: 372rpx;
+  height: 127rpx;
+}
+.winner-img,
+.loser-img,
+.tie-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.loserword {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.word-view {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.myCanvasView {
+  position: absolute;
+  left: 750rpx;
+  top: 100vh;
+}
+</style>
+<template>
+<view class="container">
+  <scroll-view class="scroll-container">
+    <canvas id="myCanvas" class="myCanvasView" canvas-id='myCanvas' style="width: 100vw;height:100vh"/>
+    <view class="header">
+      <image wx:if="{{battleItem.status===0}}" class="title algimg" data-algimg="../image/battleinfo/title.png" src="../image/battleinfo/title.png" />
+      <image wx:else class="title algimg" data-algimg="../image/battleinfo/finish/title.png" src="../image/battleinfo/finish/title.png" />
+    </view>
+    <view class="content">
+      <image class="algimg" data-algimg="../image/battleinfo/subtitle.png" src="../image/battleinfo/subtitle.png" style="width:750rpx;height:398rpx;position:absolute"  />
+      <view class="game-panel">
+        <view class="host-person-area">
+          <view class="host-area">
+            <view class="host-word-area">
+              <lable class="word algwd" data-algwd="{{battleItem.gameVo.hostName}}">{{battleItem.gameVo.hostName}}</lable>
+            </view>
+            <image class="flag algimg" data-algimg="../image/flag/{{battleItem.gameVo.hostFlag}}.png" src="../image/flag/{{battleItem.gameVo.hostFlag}}.png"/>
+          </view>
+          <view class="host-person-view">
+            <image wx:if="{{battleItem.hostUser!==null}}" class="person algimgol1" data-algimg="{{battleItem.hostUser.avatarUrl}}" src="{{battleItem.hostUser.avatarUrl}}"/>
+            <image wx:else class="empty algimg" data-algimg="../image/battleinfo/empty.png" src="../image/battleinfo/empty.png"/>
+          </view>
+          <view class="host-person-word-area" wx:if="{{battleItem.hostUser!==null}}">
+            <view  class="word-view">
+              <lable class="word algwd" data-algwd="{{battleItem.hostUser.nickName}}">{{battleItem.hostUser.nickName}}</lable>
+            </view>
+          </view>
+        </view>
+        <view class="time-area-view">
+          <view class="time-area">
+          <lable class="word algwd" style="color:black" data-algwd-color="black" data-algwd="{{battleItem.gameVo.type}}">{{battleItem.gameVo.type}}</lable>
+          </view>
+          <view class="time-area">
+          <lable class="word algwd" style="color:black" data-algwd-color="black" data-algwd="{{battleItem.gameVo.monthDay}}  {{battleItem.gameVo.hourMin}}">{{battleItem.gameVo.monthDay}}  {{battleItem.gameVo.hourMin}}</lable>
+          </view>
+          <view class="time-area">
+          <lable class="word algwd" style="color:black" data-algwd-color="black" data-algwd="{{battleItem.gameVo.week}}">{{battleItem.gameVo.week}}</lable>
+          </view>
+          <view wx:if="{{battleItem.status>0}}" class="score-view">
+            <view class="score-area">
+            <lable class="scoreword algwd" data-algwd-color="blue" data-algwd-size="30" data-algwd="{{battleItem.gameVo.hostScore}}">{{battleItem.gameVo.hostScore}}</lable>
+            <lable class="scoreword algwd" data-algwd-color="blue" data-algwd-size="30" data-algwd=":">:</lable>
+            <lable class="scoreword algwd" data-algwd-color="blue" data-algwd-size="30" data-algwd="{{battleItem.gameVo.gustScore}}">{{battleItem.gameVo.gustScore}}</lable>
+          </view>
+          </view>
+        </view>
+        <view class="gust-person-area">
+          <view class="gust-area">
+            <image class="flag algimg" data-algimg="../image/flag/{{battleItem.gameVo.gustFlag}}.png" src="../image/flag/{{battleItem.gameVo.gustFlag}}.png"/>
+            <view class="gust-word-area">
+              <lable class="word algwd"  data-algwd="{{battleItem.gameVo.gustName}}">{{battleItem.gameVo.gustName}}</lable>
+            </view>
+          </view>
+          <view class="gust-person-view">
+            <image  wx:if="{{battleItem.gustUser!==null}}"  class="person algimgol2" data-algimg="{{battleItem.gustUser.avatarUrl}}"  src="{{battleItem.gustUser.avatarUrl}}"/>
+            <image wx:else class="empty algimg" data-algimg="../image/battleinfo/empty.png" src="../image/battleinfo/empty.png"/>
+          </view>
+          <view class="gust-person-word-area" wx:if="{{battleItem.gustUser!==null}}">
+            <view  class="word-view">
+              <lable class="word algwd" data-algwd="{{battleItem.gustUser.nickName}}">{{battleItem.gustUser.nickName}}</lable>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view  wx:if="{{battleItem.status===0}}">
+      <view class="award-content  {{battleItem.creater!=null && battleItem.challenger!=null?'hide':''}}">
+        <view class="award-item">
+            <image class="award algimg" data-algimg="../image/battleinfo/{{battleItem.award}}.png"  src="../image/battleinfo/{{battleItem.award}}.png" />
+        </view>  
+      </view>
+      <view class="award-content  {{battleItem.creater!=null && battleItem.challenger!=null?'':'hide'}}">
+        <view class="award-item">
+            <image class="award-win algimg" data-algimg="../image/battleinfo/award/{{battleItem.award}}.png" src="../image/battleinfo/award/{{battleItem.award}}.png" />
+        </view>  
+      </view>
+    </view>
+    <view wx:else class="finish-panel {{battleItem.creater!=null && battleItem.challenger!=null?'':'hide'}}">
+        <view  wx:if="{{battleItem.status===2}}" class="tie-img" style="margin-top:30px">
+          <image class="tie algimg" data-algimg="../image/battleinfo/finish/tie.png" src="../image/battleinfo/finish/tie.png" />
+        </view>
+        <view wx:else class="result-panel">
+          <view wx:if="{{battleItem.status===1}}" class="winner-panel">
+            <view class="winner-img">
+              <image class="winner algimg" data-algimg="../image/battleinfo/finish/winner.png" src="../image/battleinfo/finish/winner.png" />
+            </view>
+          </view>  
+          <view  wx:if="{{battleItem.status===3}}"  class="loser-panel">
+            <view class="loser-img">
+              <image class="loser algimg" data-algimg="../image/battleinfo/finish/loser.png" src="../image/battleinfo/finish/loser.png" />
+            </view>
+            <view class="loser-word">
+              <lable class="loserword algwd" data-algwd="进贡{{awardName}}" data-algwd-size="18">进贡{{awardName}}</lable>
+            </view>
+          </view>
+        </view>
+        <view  wx:if="{{battleItem.status!==2}}"  class="result-panel">
+          <view  wx:if="{{battleItem.status===3}}"  class="winner-panel">
+            <view class="winner-img">
+              <image class="winner algimg" data-algimg="../image/battleinfo/finish/winner.png" src="../image/battleinfo/finish/winner.png" />
+            </view>
+          </view>  
+          <view  wx:if="{{battleItem.status===1}}"  class="loser-panel">
+            <view class="loser-img">
+              <image class="loser algimg" data-algimg="../image/battleinfo/finish/loser.png" src="../image/battleinfo/finish/loser.png" />
+            </view>
+            <view class="loser-word">
+              <lable class="loserword algwd" data-algwd="进贡{{awardName}}" data-algwd-size="18">进贡{{awardName}}</lable>
+            </view>
+          </view>
+        </view>
+    </view>
+    <view class="qrcode-cotent">
+      <image class="qrcode algimg" data-algimg="../image/battleinfo/qrcode.png" src="../image/battleinfo/qrcode.png" />
+    </view> 
+    <form @submit="formSubmit" report-submit="true" >
+    <view class="operate-area" wx-if="{{battleItem.creater!=null && battleItem.challenger==null&& battleItem.gameVo.status==0}}">
+      <button formType="submit" class="receivebattle-btn" wx-if="{{openId!==battleItem.creater.openId}}" open-type="getUserInfo" @getuserinfo="getUserInfo"/>
+      <button formType="submit" class="wantbattle-btn" wx-if="{{openId!==battleItem.creater.openId}}" @tap="wantBattle"/>
+      <button formType="submit" class="find-btn" wx-if="{{openId==battleItem.creater.openId}}" open-type="share"/>
+      <button formType="submit" class="wantbattle-btn" wx-if="{{openId==battleItem.creater.openId && (scene===1007||scene===1008)}}" @tap="wantBattle"/>
+    </view>
+    </form>
+     <view class="operate-area" wx:if="{{battleItem.creater!=null && battleItem.challenger!=null && openId != battleItem.creater.openId && openId != battleItem.challenger.openId}}">
+      <button class="wantbattle-btn" @tap="wantBattle"/>
+    </view>
+    <view class="operate-area {{battleItem.creater!=null && battleItem.challenger ==null && battleItem.gameVo.status>0?'':'hide'}}">
+      <button class="wantbattle-btn" @tap="wantBattle"/>
+    </view>
+     <form @submit="formSubmit" report-submit="true" >
+    <view class="share-area" wx:if="{{battleItem.creater!=null && battleItem.challenger!=null && (openId == battleItem.creater.openId || openId == battleItem.challenger.openId)}}">
+        <view class="share-friend-area">
+          <view class="share-friend-btn">
+            <button formType="submit"  open-type="share" class="friend"></button>
+          </view>
+          <view class="share-friend-word">
+            <lable class="word">分享给老铁</lable>
+          </view>
+        </view>
+        <view class="share-timeline-area">
+          <view class="share-timeline-btn">
+            <button formType="submit"  @tap='savePic' class="shareline"></button>
+          </view>
+          <view class="share-timeline-word">
+            <lable class="word">分享到朋友圈</lable>
+          </view>
+        </view>
+        <view class="new-battle-area">
+          <view class="new-battle-btn">
+            <button formType="submit"  @tap='wantBattle' class="newbattlebtn"></button>
+          </view>
+          <view class="new-battle-word">
+            <lable class="word">新的Battle</lable>
+          </view>
+        </view>
+    </view>
+    </form>
+  </scroll-view>
+</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+
+export default class Battleinfo extends wepy.page {
+  config = {
+    navigationBarTitleText: 'Battle战'
+  }
+  onLoad(options) {
+    var self = this
+    this.bid = options.bid
+    this.isBusy = false
+    this.scene = this.$parent.globalData.scene
+    wepy.login({
+      success: function (res) {
+        if (res.code) {
+          wepy.request({
+            url: 'https://battle-api.algforce.com/wechat/user/login',
+            data: {
+              code: res.code
+            },
+            success: function (e) {
+              console.log(e.data)
+              self.$parent.globalData.openId = e.data.openid
+              self.openId = e.data.openid
+              self.$apply()
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+    this.getBattleInfo()
+  }
+
+  onShow() {
+    this.isBusy = false
+  }
+
+  onPullDownRefresh() {
+    wepy.showToast({
+      title: '刷新中',
+      icon: 'success',
+      duration: 2000
+    })
+    this.getBattleInfo()
+    wepy.stopPullDownRefresh()
+  }
+
+  getBattleInfo() {
+    var self = this
+    wepy.request({
+      url: 'https://battle-api.algforce.com/wechat/battle/' + this.bid,
+      success: function (e) {
+        if (e.data.flag) {
+          self.battleItem = e.data.data
+          self.awardList.forEach(function (item) {
+            if (item.id === self.battleItem.award) {
+              self.awardName = item.name
+            }
+          })
+          self.$apply()
+        }
+        console.info(e)
+      }
+    })
+  }
+
+  postBattle(battleid, openid, word, self) {
+    if (self.isBusy) return
+    self.isBusy = true
+    wepy.request({
+      url: 'https://battle-api.algforce.com/wechat/battle/receive',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        battleId: battleid,
+        openId: openid,
+        word: word
+      },
+      success: function (e) {
+        if (e.data.flag) {
+          wepy.showToast({
+            title: '挑战成功',
+            icon: 'success',
+            duration: 2000
+          })
+          wepy.redirectTo({
+            url: 'battleinfo?bid=' + battleid
+          })
+        } else {
+          wepy.showToast({
+            title: '已有人应战',
+            icon: 'none',
+            duration: 2000
+          })
+          wepy.switchTab({
+            url: 'index'
+          })
+        }
+      },
+      complete: function (e) {
+        self.isBusy = false
+      }
+    })
+  }
+
+  postUserInfo(userInfo) {
+    var self = this
+    userInfo.openId = this.$parent.globalData.openId
+    wepy.request({
+      url: 'https://battle-api.algforce.com/wechat/userinfo/create',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: userInfo,
+      success: function (e) {
+        if (e.data.flag) {
+          if (e.data.data) {
+            self.postBattle(self.battleItem.id, userInfo.openId, '', self)
+          }
+        }
+      }
+    })
+  }
+
+  getPicHeight() {
+    return new Promise((resolve, reject) => {
+      wepy.createSelectorQuery().selectAll('.qrcode').boundingClientRect(function (rects) {
+        resolve(rects[0].top + rects[0].height)
+      }).exec()
+    })
+  }
+
+  promiseImg(pc) {
+    return new Promise((resolve, reject) => {
+      wepy.createSelectorQuery().selectAll('.algimg').boundingClientRect(function (rects) {
+        rects.forEach(function (rect) {
+          console.info(rect.dataset.algimg)
+          pc.drawImage(rect.dataset.algimg, rect.left, rect.top, rect.width, rect.height)
+          console.info(rect)
+        })
+      }).exec(function (res) {
+        resolve('promise resolved')
+      })
+    })
+  }
+
+  promiseImgOl(pc, selector) {
+    return new Promise((resolve, reject) => {
+      wepy.createSelectorQuery().selectAll(selector).boundingClientRect(function (rects) {
+        console.info(rects)
+        if (rects.length > 0 && rects[0].dataset !== null && typeof (rects[0].dataset) !== 'undefined' && rects[0].dataset.algimg !== null && typeof (rects[0].dataset.algimg) !== 'undefined') {
+          var p2 = new Promise((resolve, reject) => {
+            wepy.getImageInfo({
+              src: rects[0].dataset.algimg,
+              success: function (res) {
+                console.info(2)
+                // var d = 2 * rects[0].width / 2
+                // var cx = rects[0].left + rects[0].width / 2
+                // var cy = rects[0].top + rects[0].width / 2
+                // pc.save()
+                // pc.beginPath()
+                // pc.arc(cx, cy, rects[0].width / 2, 0, 2 * Math.PI)
+                // pc.clip()
+                pc.drawImage(res.path, rects[0].left, rects[0].top, rects[0].width, rects[0].width)
+                pc.setStrokeStyle('white')
+                pc.strokeRect(rects[0].left, rects[0].top, rects[0].width, rects[0].width)
+                // pc.translate(rects[0].left * -1, rects[0].top * -1)
+                // pc.restore()
+                resolve()
+              }
+            })
+          })
+          p2.then(function (x) {
+            resolve()
+          })
+        } else {
+          resolve()
+        }
+      }).exec()
+    })
+  }
+
+  promiseWd(pc) {
+    return new Promise((resolve, reject) => {
+      wepy.createSelectorQuery().selectAll('.algwd').boundingClientRect(function (rects) {
+        rects.forEach(function (rect) {
+          console.info(rect.dataset.algwdColor)
+          if (rect.dataset.algwdColor === null || typeof (rect.dataset.algwdColor) === 'undefined') {
+            pc.setFillStyle('white')
+          } else {
+            pc.setFillStyle(rect.dataset.algwdColor)
+          }
+          var y = rect.top + 13
+          if (rect.dataset.algwdSize === null || typeof (rect.dataset.algwdSize) === 'undefined') {
+            pc.font = '13px blod sans-serif'
+          } else {
+            pc.font = rect.dataset.algwdSize + 'px blod sans-serif'
+            y = rect.top + parseInt(rect.dataset.algwdSize)
+          }
+          pc.fillText(rect.dataset.algwd, rect.left, y, rect.width)
+          console.info(rect)
+        })
+      }).exec(function (res) {
+        resolve('promise resolved')
+      })
+    })
+  }
+
+  postTemplate(formid, openid, bid, self) {
+    wepy.request({
+      url: 'https://battle-api.algforce.com/wechat/template',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        formId: formid,
+        openId: openid,
+        bizId: bid
+      },
+      success: function (e) {
+        console.info(e)
+      }
+    })
+  }
+
+  data = {
+    scene: 0,
+    bid: null,
+    battleItem: null,
+    openId: null,
+    awardName: '',
+    isBusy: false,
+    awardList: [{ id: '1', name: '一罐啤酒' }, { id: '2', name: '一瓶汽水儿' }, { id: '3', name: '一根鸡腿儿' }, { id: '4', name: '一顿小龙虾' }, { id: '5', name: '一杯咖啡' }, { id: '6', name: '一杯奶茶' }]
+  }
+  methods = {
+    formSubmit: function (e) {
+      console.log('form发生了submit事件，携带数据为：', e.detail.formId)
+      this.postTemplate(e.detail.formId, this.openId, this.bid, this)
+    },
+    onShareAppMessage(res) {
+      if (res.from === 'button') {
+        // 来自页面内转发按钮
+        console.log(res.target)
+      }
+      let pathTemp = '/pages/battleinfo?bid=' + this.battleItem.id
+      let titleTemp = ''
+      if (this.battleItem.status === 0) {
+        if (this.battleItem.challenger === null) {
+          titleTemp = this.battleItem.creater.nickName + '向你发起世界杯Battle,不服来战!'
+        } else {
+          titleTemp = this.battleItem.creater.nickName + '与' + this.battleItem.challenger.nickName + '世界杯Battle大战,一触即发,立帖为证!'
+        }
+      } else {
+        if (this.battleItem.status === 1) {
+          titleTemp = this.battleItem.hostUser.nickName + '在世界杯Battle中获胜!'
+        } else if (this.battleItem.status === 2) {
+          titleTemp = this.battleItem.hostUser.nickName + '与' + this.battleItem.gustUser.nickName + '在世界杯Battle中战平!'
+        } else {
+          titleTemp = this.battleItem.gustUser.nickName + '在世界杯Battle中获胜!'
+        }
+      }
+      console.info(pathTemp)
+      return {
+        title: titleTemp,
+        path: pathTemp,
+        success: function (res) {
+          wepy.showToast({
+            title: '分享成功',
+            icon: 'success',
+            duration: 2000
+          })
+        },
+        fail: function (res) {
+          wepy.showToast({
+            title: '分享失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    },
+    getUserInfo(e) {
+      this.postUserInfo(e.detail.userInfo)
+    },
+    teamSelected(e) {
+      this.selectedTeamId = e.currentTarget.dataset.teamid
+    },
+    selectedAward(e) {
+      this.selectedAwardId = e.currentTarget.dataset.awardid
+    },
+    wantBattle(e) {
+      wepy.switchTab({
+        url: 'index'
+      })
+    },
+    savePic() {
+      wepy.showLoading('正在生成Battle海报...', true)
+      this.getPicHeight().then(data => {
+        const width = wepy.getSystemInfoSync().windowWidth
+        const height = data + 5
+        const pc = wepy.createCanvasContext('myCanvas')
+        pc.clearRect(0, 0, width, height)
+        pc.drawImage('../image/index/bg.jpg', 0, 0, width, height)
+        let imgPromise = this.promiseImg(pc)
+        let imgol1Promise = this.promiseImgOl(pc, '.algimgol1')
+        let imgol2Promise = this.promiseImgOl(pc, '.algimgol2')
+        let wdPromise = this.promiseWd(pc)
+        Promise.all([imgPromise, imgol1Promise, imgol2Promise, wdPromise]).then(function (results) {
+          pc.draw(true, function () {
+            wepy.canvasToTempFilePath({
+              x: 0,
+              y: 0,
+              height: height,
+              width: width,
+              fileType: 'jpg',
+              canvasId: 'myCanvas',
+              success: (res) => {
+                wepy.saveImageToPhotosAlbum({
+                  filePath: res.tempFilePath,
+                  success: (res) => {
+                    wepy.hideLoading()
+                    wepy.showModal({
+                      title: '生成成功',
+                      content: '图片已保存到系统相册啦~\n快去朋友圈立帖为证！',
+                      showCancel: false
+                    })
+                    console.log('success:' + res)
+                  },
+                  fail(e) {
+                    wepy.hideLoading()
+                    wepy.showToast({
+                      title: '生成失败',
+                      icon: 'none',
+                      duration: 2000
+                    })
+                    console.log('err:' + e)
+                  }
+                })
+              }
+            })
+          })
+        })
+      })
+    }
+  }
+}
+</script>

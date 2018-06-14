@@ -1,0 +1,476 @@
+<style lang="less">
+page {
+  height: 100%;
+  background-image: url('https://childrensday.algforce.com/image/battle/index/bg.jpg');
+  background-size: cover;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.bg {
+  width: 100%;
+  height: 600px;
+}
+.title {
+  width: 750rpx;
+  height: 216rpx;
+}
+.header {
+  flex-grow: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.content {
+  flex-grow: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.my-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top: 40rpx;
+}
+.my-avatar-panel,
+.my-nickname-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.myavatar {
+  width: 100rpx;
+  height: 100rpx;
+  border: #d1ba87 1px solid;
+  border-radius: 50rpx;
+  overflow: hidden;
+  display: block;
+}
+.myword {
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.content-scroll {
+  height: 530px;
+}
+.game-panel {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  background-color: white;
+  border-radius: 10px;
+  margin: 10px;
+}
+.user-panel {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.host-area,
+.gust-area,
+.vs-area,
+.time-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.time-area-view {
+  flex: 1 1 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 8px;
+}
+.score-view,
+.battleing-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.score-area,
+.battleing-view-panel {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.host-person-area,
+.gust-person-area {
+  display: flex;
+  flex: 1 1 40%;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 10px;
+}
+
+.host-word-area,
+.gust-word-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.host-person-word-area,
+.gust-person-word-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.flag {
+  width: 59px;
+  height: 30px;
+}
+.person {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  border: #d1ba87 2px solid;
+}
+.empty {
+  width: 96rpx;
+  height: 111.2rpx;
+}
+.word {
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.scoreword {
+  font-size: 25px;
+  font-weight: bold;
+  color: blue;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.host-person-view,
+.gust-person-view,
+.gust-empty-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin-top: 15px;
+}
+.hide {
+  display: none !important;
+}
+.win-host {
+  width: 51rpx;
+  height: 45rpx;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: -40px;
+}
+.tie-host {
+  width: 54rpx;
+  height: 45rpx;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: -40px;
+}
+.lose-host {
+  width: 51rpx;
+  height: 45rpx;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: -40px;
+}
+.win-gust {
+  width: 51rpx;
+  height: 45rpx;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 40px;
+}
+.tie-gust {
+  width: 54rpx;
+  height: 45rpx;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 40px;
+}
+.lose-gust {
+  width: 51rpx;
+  height: 45rpx;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 40px;
+}
+.battleing {
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 15px;
+}
+.creater {
+  width: 72rpx;
+  height: 22.5rpx;
+  position: absolute;
+  margin-top: -10px;
+}
+.no-battle {
+  width: 553rpx;
+  height: 143rpx;
+}
+.no-battle-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+.operate-area {
+  width: 100%;
+  flex-grow: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin-top: 20px;
+}
+.wantbattle-btn {
+  width: 326rpx;
+  height: 86rpx;
+  border: 0;
+  background-size: cover;
+  background-color: transparent;
+}
+</style>
+<template>
+  <view class="container">
+    <view class="header">
+      <image class="title" src="../image/createbattle/title.png" />
+    </view>
+    <view class="no-battle-panel" wx:if="{{isNoBattle}}">
+          <image class="no-battle" src="../image/no-battle.png"/>
+    </view>
+    <view class="content" wx:if="{{!isNoBattle}}">
+      <scroll-view class="content-scroll" style="height:{{scrollHeight}}px" scroll-y='true' @scrolltolower="onScrollToLower">
+        <repeat for="{{battleList}}"  item="battleItem">
+          <view class="game-panel" data-bid="{{battleItem.id}}" @tap="viewBattle">
+            <view class="host-person-area">
+              <view class="host-area">
+                <view class="host-word-area">
+                  <lable class="word">{{battleItem.gameVo.hostName}}</lable>
+                </view>
+                <image class="flag" src="../image/flag/{{battleItem.gameVo.hostFlag}}.png"/>
+              </view>
+              <view class="host-person-view">
+                <image class="creater" wx:if="{{battleItem.creater.openId==battleItem.hostUser.openId}}"  src="../image/mybattle/creater.png"/>
+                <block wx:if="{{battleItem.hostUser!=null&&battleItem.gustUser!=null&&openId == battleItem.hostUser.openId}}">
+                  <image class="win-host" wx:if="{{battleItem.status==1}}"  src="../image/mybattle/win.png"/>
+                  <image class="win-host" wx:if="{{battleItem.status==2}}"  src="../image/mybattle/tie.png"/>
+                  <image class="win-host" wx:if="{{battleItem.status==3}}"  src="../image/mybattle/lose.png"/>
+                </block>
+                <image class="person {{battleItem.hostUser==null?'hide':''}}" src="{{battleItem.hostUser.avatarUrl}}"></image>
+                <image class="empty {{battleItem.hostUser==null?'':'hide'}}" src="../image/battleinfo/empty.png"/>
+              </view>
+              <view class="host-person-word-area">
+                <lable class="word">{{battleItem.hostUser.nickName}}</lable>
+              </view>
+            </view>
+            <view class="time-area-view ">
+              <view class="time-area">
+              <lable class="word" style="color:black">{{battleItem.gameVo.type}}</lable>
+              </view>
+              <view class="time-area">
+              <lable class="word" style="color:black">{{battleItem.gameVo.monthDay}}  {{battleItem.gameVo.hourMin}}</lable>
+              </view>
+              <view class="time-area">
+              <lable class="word" style="color:black">{{battleItem.gameVo.week}}</lable>
+              </view>
+              <view class="score-view">
+               <view class="score-area {{battleItem.status>0?'':'hide'}}">
+                <lable class="scoreword">{{battleItem.gameVo.hostScore}}</lable>
+                <lable class="scoreword">:</lable>
+                <lable class="scoreword">{{battleItem.gameVo.gustScore}}</lable>
+              </view>
+              </view>
+              <view class="battleing-view" wx:if="{{battleItem.hostUser!==null && battleItem.gustUser!==null && battleItem.status == 0}}">
+                <view class="battleing-view-panel">
+                  <image class="battleing" src="../image/selected-battle-icon.png"/>
+                </view>
+              </view>
+            </view>
+            <view class="gust-person-area">
+              <view class="gust-area">
+                <image class="flag" src="../image/flag/{{battleItem.gameVo.gustFlag}}.png"/>
+                <view class="gust-word-area">
+                  <lable class="word">{{battleItem.gameVo.gustName}}</lable>
+                </view>
+              </view>
+              <view class="gust-person-view">
+                <image class="creater" wx:if="{{battleItem.creater.openId==battleItem.gustUser.openId}}"  src="../image/mybattle/creater.png"/>
+                <block wx:if="{{battleItem.hostUser!=null&&battleItem.gustUser!=null&&openId == battleItem.gustUser.openId}}">
+                  <image class="win-gust" wx:if="{{battleItem.status==3}}"  src="../image/mybattle/win.png"/>
+                  <image class="win-gust" wx:if="{{battleItem.status==2}}"  src="../image/mybattle/tie.png"/>
+                  <image class="win-gust" wx:if="{{battleItem.status==1}}"  src="../image/mybattle/lose.png"/>
+                </block>
+                <image class="person {{battleItem.gustUser==null?'hide':''}}"  src="{{battleItem.gustUser.avatarUrl}}"/>
+                <image class="empty {{battleItem.gustUser==null?'':'hide'}}" src="../image/battleinfo/empty.png"/>
+              </view>
+              <view class="gust-person-word-area">
+                <lable class="word">{{battleItem.gustUser.nickName}}</lable>
+              </view>
+            </view>
+          </view>
+        </repeat>
+      </scroll-view>
+    </view>
+     <view class="operate-area">
+      <image class="wantbattle-btn" @tap="wantBattle" src="../image/cbattle-btn.png"/>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class BattleList extends wepy.page {
+  config = {
+    navigationBarTitleText: '球赛Battle',
+    enablePullDownRefresh: true
+  }
+  onLoad(options) {
+    console.log('onLoad')
+    this.gameId = options.gid
+    this.initData(this)
+    this.openId = this.$parent.globalData.openId
+  }
+
+  onPullDownRefresh() {
+    wepy.showToast({
+      title: '刷新中',
+      icon: 'success',
+      duration: 1000
+    })
+    this.initData(this)
+    wepy.stopPullDownRefresh()
+  }
+
+  initData(self) {
+    self.battleList = []
+    self.number = 0
+    self.last = false
+    self.isBusy = false
+    self.getMyBattleData(self)
+  }
+
+  getMyBattleData(self) {
+    if (self.isBusy) return
+    if (self.last) return
+    let page = 0
+    if (self.battleList.length > 0) {
+      page = self.number + 1
+    }
+    self.isBusy = true
+    wepy.request({
+      url: 'https://battle-api.algforce.com/wechat/battle/gamebattle/page',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        openId: self.$parent.globalData.openId,
+        gameId: self.gameId,
+        page: page,
+        size: 10
+      },
+      success: function (e) {
+        if (e.data.flag) {
+          e.data.data.content.forEach(function (item) {
+            self.battleList.push(item)
+          })
+          self.number = e.data.data.number
+          self.last = e.data.data.last
+          self.isNoBattle = true
+          if (self.battleList.length > 0) {
+            self.isNoBattle = false
+          }
+          self.$apply()
+        }
+        console.info(e)
+      },
+      complete: function (e) {
+        self.isBusy = false
+      }
+    })
+  }
+  data = {
+    isNoBattle: false,
+    openId: null,
+    gameId: null,
+    battleList: [],
+    number: 0,
+    last: false,
+    isBusy: false,
+    scrollHeight: wepy.getSystemInfoSync().windowHeight - wepy.getSystemInfoSync().windowHeight / 555 * 153
+  }
+
+  methods = {
+    onShareAppMessage(res) {
+      if (res.from === 'button') {
+        // 来自页面内转发按钮
+        console.log(res.target)
+      }
+      let pathTemp = '/pages/index'
+      let titleTemp = '世界杯Battle大战,巅峰对决,立帖为证！'
+      return {
+        title: titleTemp,
+        path: pathTemp,
+        success: function (res) {
+          wepy.showToast({
+            title: '分享成功',
+            icon: 'success',
+            duration: 2000
+          })
+        },
+        fail: function (res) {
+          wepy.showToast({
+            title: '分享失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    },
+    onScrollToLower(e) {
+      this.getMyBattleData(this)
+    },
+    viewBattle(e) {
+      wepy.navigateTo({
+        url: 'battleinfo?bid=' + e.currentTarget.dataset.bid
+      })
+    },
+    wantBattle(e) {
+      wepy.navigateTo({
+        url: 'createbattle'
+      })
+    }
+  }
+}
+</script>

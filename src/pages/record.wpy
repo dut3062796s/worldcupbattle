@@ -1,0 +1,444 @@
+<style lang="less">
+page {
+  height: 100%;
+  background-image: url('https://childrensday.algforce.com/image/battle/index/bg.jpg');
+  background-size: cover;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.bg {
+  width: 100%;
+  height: 600px;
+}
+.title {
+  width: 750rpx;
+  height: 216rpx;
+}
+.header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.my-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top: 40rpx;
+}
+.my-avatar-panel,
+.my-nickname-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.myavatar {
+  width: 100rpx;
+  height: 100rpx;
+  border: white 1px solid;
+  border-radius: 50rpx;
+  overflow: hidden;
+  display: block;
+}
+.myword {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.content-scroll {
+  height: 508px;
+}
+.content-header {
+  width: 100vw;
+  flex-grow: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.game-panel {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  border: 2px white solid;
+  border-radius: 10px;
+  margin: 5px;
+}
+.game-panel-header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.user-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.host-area,
+.gust-area,
+.vs-area,
+.time-area {
+  flex: 0 0 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.time-area-view {
+  flex: 0 0 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.host-person-area,
+.gust-person-area {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 40vw;
+}
+
+.host-word-area,
+.gust-word-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.host-person-word-area,
+.gust-person-word-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+}
+.flag {
+  width: 59px;
+  height: 30px;
+}
+.person {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  border: white 1px solid;
+}
+.empty {
+  width: 199rpx;
+  height: 231rpx;
+}
+.word {
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.scoreword {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  width: 20vx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.host-person-view,
+.gust-person-view,
+.gust-empty-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.hide {
+  display: none !important;
+}
+.no-battle {
+  width: 553rpx;
+  height: 143rpx;
+}
+.no-battle-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+</style>
+<template>
+  <view class="container">
+    <view class="header">
+      <image class="title" src="../image/record/title.png" />
+    </view>
+    <view class="no-battle-panel" wx:if="{{isNoBattle}}">
+          <image class="no-battle" src="../image/no-battle.png"/>
+    </view>
+    <view class="content-header" wx:if="{{!isNoBattle}}">
+      <view style="width:100%">
+        <view class="game-panel-header">
+          <view class="time-area-view">
+            <view class="time-area">
+              <lable class="scoreword">排名</lable>
+            </view>
+          </view>
+          <view class="host-person-area">
+            <view class="host-person-word-area" style="justify-content: center;">
+              <lable class="scoreword">昵称</lable>
+            </view>
+          </view>
+          <view class="time-area-view">
+            <view class="time-area">
+              <lable class="scoreword">胜</lable>
+            </view>
+          </view>
+          <view class="time-area-view">
+            <view class="time-area">
+              <lable class="scoreword">平</lable>
+            </view>
+          </view>
+          <view class="time-area-view">
+            <view class="time-area">
+              <lable class="scoreword">负</lable>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+     <view class="content-header" wx:if="{{!isNoBattle}}" style="width:auto;background: white;border-radius: 10px;height: 40px;margin-top:5px;margin-bottom:20px">
+      <view style="width:100%">
+        <view class="game-panel" >
+          <view class="time-area-view">
+            <view class="time-area">
+              <lable class="scoreword" style="color:black">{{selfRecord.seq}}</lable>
+            </view>
+          </view>
+          <view class="host-person-area">
+            <view class="host-person-word-area">
+              <view class="host-person-view">
+                  <image class="person" src="{{selfRecord.avatarUrl}}"/>
+                </view>
+              <lable class="scoreword" style="color:black">{{selfRecord.nickName}}</lable>
+            </view>
+          </view>
+          <view class="time-area-view">
+            <view class="time-area">
+              <lable class="scoreword" style="color:black">{{selfRecord.win}}</lable>
+            </view>
+          </view>
+          <view class="time-area-view">
+            <view class="time-area">
+              <lable class="scoreword" style="color:black">{{selfRecord.tie}}</lable>
+            </view>
+          </view>
+          <view class="time-area-view">
+            <view class="time-area">
+              <lable class="scoreword" style="color:black">{{selfRecord.lose}}</lable>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="content" wx:if="{{!isNoBattle}}">
+      <scroll-view class="content-scroll" style="height:{{scrollHeight}}px" scroll-y='true' @scrolltolower="onScrollToLower">
+        
+        <repeat for="{{recordList}}" index="index" item="recordItem">
+          <view class="game-panel">
+            <view class="time-area-view">
+              <view class="time-area">
+                <lable class="scoreword">{{index+1}}</lable>
+              </view>
+            </view>
+            <view class="host-person-area">
+              <view class="host-person-word-area">
+                <view class="host-person-view">
+                  <image class="person" src="{{recordItem.avatarUrl}}"/>
+                </view>
+                <lable class="scoreword">{{recordItem.nickName}}</lable>
+              </view>
+            </view>
+            <view class="time-area-view">
+              <view class="time-area">
+                <lable class="scoreword">{{recordItem.win}}</lable>
+              </view>
+            </view>
+            <view class="time-area-view">
+              <view class="time-area">
+                <lable class="scoreword">{{recordItem.tie}}</lable>
+              </view>
+            </view>
+            <view class="time-area-view">
+              <view class="time-area">
+                <lable class="scoreword">{{recordItem.lose}}</lable>
+              </view>
+            </view>
+          </view>
+        </repeat>
+      </scroll-view>
+    </view>
+   
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Record extends wepy.page {
+  config = {
+    navigationBarTitleText: '荣耀榜',
+    enablePullDownRefresh: true
+  }
+  onLoad() {
+    console.log('onLoad')
+    // this.getRecordData(this)
+  }
+
+  onShow() {
+    console.log('onShow')
+    this.initData(this)
+  }
+
+  onPullDownRefresh() {
+    wepy.showToast({
+      title: '刷新中',
+      icon: 'success',
+      duration: 1000
+    })
+    this.initData(this)
+    wepy.stopPullDownRefresh()
+  }
+
+  initData(self) {
+    self.recordList = []
+    self.number = 0
+    self.last = false
+    self.isBusy = false
+    self.getRecordData(self)
+    this.getSelfRecordData(self)
+  }
+
+  getSelfRecordData(self) {
+    wepy.request({
+      url: 'https://battle-api.algforce.com/wechat/userrecord/self',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        openId: self.$parent.globalData.openId
+      },
+      success: function (e) {
+        if (e.data.flag) {
+          self.selfRecord = e.data.data
+          self.$apply()
+        }
+        console.info(e)
+      }
+    })
+  }
+
+  getRecordData(self) {
+    if (self.isBusy) return
+    if (self.last) return
+    let page = 0
+    if (self.recordList.length > 0) {
+      page = self.number + 1
+    }
+    self.isBusy = true
+    wepy.request({
+      url: 'https://battle-api.algforce.com/wechat/userrecord/friend',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        openId: self.$parent.globalData.openId,
+        page: page,
+        size: 10
+      },
+      success: function (e) {
+        if (e.data.flag) {
+          e.data.data.content.forEach(function (item) {
+            self.recordList.push(item)
+          })
+          self.number = e.data.data.number
+          self.last = e.data.data.last
+          if (self.recordList.length > 0) {
+            self.isNoBattle = false
+          } else {
+            self.isNoBattle = true
+          }
+          self.$apply()
+        }
+        console.info(e)
+      },
+      complete: function (e) {
+        self.isBusy = false
+      }
+    })
+  }
+  data = {
+    isNoBattle: false,
+    selfRecord: null,
+    recordList: [],
+    number: 0,
+    last: false,
+    isBusy: false,
+    scrollHeight: wepy.getSystemInfoSync().windowHeight - wepy.getSystemInfoSync().windowHeight / 555 * 190
+  }
+
+  methods = {
+    onShareAppMessage(res) {
+      if (res.from === 'button') {
+        // 来自页面内转发按钮
+        console.log(res.target)
+      }
+      let pathTemp = '/pages/index'
+      let titleTemp = '世界杯Battle大战,巅峰对决,立帖为证！'
+      return {
+        title: titleTemp,
+        path: pathTemp,
+        success: function (res) {
+          wepy.showToast({
+            title: '分享成功',
+            icon: 'success',
+            duration: 2000
+          })
+        },
+        fail: function (res) {
+          wepy.showToast({
+            title: '分享失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    },
+    onScrollToLower(e) {
+      this.getRecordData(this)
+    }
+  }
+}
+</script>

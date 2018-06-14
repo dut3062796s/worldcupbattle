@@ -1,0 +1,367 @@
+<style lang="less">
+page {
+  height: 100%;
+  background-image: url('https://childrensday.algforce.com/image/battle/index/bg.jpg');
+  background-size: cover;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.bg {
+  width: 100%;
+  height: 600px;
+}
+.title {
+  width: 750rpx;
+  height: 216rpx;
+}
+.subcontent1 {
+  width: 332rpx;
+  height: 48rpx;
+  margin-left: 30rpx;
+}
+.subcontent2 {
+  width: 281rpx;
+  height: 48rpx;
+  margin-left: 30rpx;
+}
+.header {
+  flex-grow: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.content1,
+.content2 {
+  flex-grow: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+.content1-view,
+.content2-view {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+}
+.content-detail {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.content-detail-panel {
+  height: auto;
+  width: 700rpx;
+  margin: 5px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  padding: 5px;
+}
+.host-area,
+.gust-area,
+.time-area,
+.operate-area {
+  flex-grow: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  width: 30%;
+}
+.selected-area {
+  border: 2px solid #fdfd00 !important;
+}
+.host-flag-area,
+.host-name-area,
+.gust-flag-area,
+.gust-name-area,
+.vs-area,
+.start-time-area,
+.award-word-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.vs-area {
+  margin-top: 10px;
+}
+.flag {
+  width: 59px;
+  height: 30px;
+}
+.word {
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vs {
+  width: 120rpx;
+  height: 42rpx;
+}
+.award-view-panel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.award-panel {
+  // height: auto;
+  width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  margin-top: 10px;
+}
+.award-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 5px;
+}
+.award {
+  width: 149rpx;
+  height: 150rpx;
+  border: solid 2px white;
+}
+.word-selected {
+  color: #fdfd00 !important;
+}
+.operate-area {
+  width: 100%;
+  flex-grow: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin-top: 20px;
+}
+.createbattle-btn {
+  width: 326rpx;
+  height: 86rpx;
+  background-image: url('https://childrensday.algforce.com/image/battle/createbattle/createbattle-btn.png');
+  border: 0;
+  background-size: cover;
+  background-color: transparent;
+}
+</style>
+<template>
+  <view class="container">
+    <view class="header">
+      <image class="title" src="../image/createbattle/title.png" />
+    </view>
+    <view class="content1">
+      <view class="content1-view">
+        <image class="subcontent1" src="../image/createbattle/subcontent1.png" />
+      </view>
+      <view class="content-detail">
+        <view class="content-detail-panel">
+            <view class="host-area {{selectedTeamId==gameItem.hostId?'selected-area':''}}" data-teamid="{{gameItem.hostId}}" @tap="teamSelected">
+              <view class="host-flag-area">
+                <image class="flag" src="../image/flag/{{gameItem.hostFlag}}.png"/>
+              </view>
+              <view class="host-name-area">
+                <lable class="word">{{gameItem.hostName}}</lable>
+              </view>
+            </view>
+            <view class="gust-area {{selectedTeamId==gameItem.gustId?'selected-area':''}}" data-teamid="{{gameItem.gustId}}" @tap="teamSelected">
+              <view class="gust-flag-area">
+                <image class="flag" src="../image/flag/{{gameItem.gustFlag}}.png"/>
+              </view>  
+              <view class="gust-name-area">
+                <lable class="word">{{gameItem.gustName}}</lable>
+              </view>
+            </view>
+        </view>
+      </view>
+    </view>
+    <view class="content2">
+      <view class="content2-view">
+        <image class="subcontent2" src="../image/createbattle/subcontent2.png" />
+      </view>
+      <view class="award-view-panel">
+        <view class="award-panel">
+          <repeat for="{{awardList}}" item="awarditem">
+            <view class="award-detail"  data-awardid="{{awarditem.id}}" @tap="selectedAward">
+              <image class="award  {{selectedAwardId==awarditem.id?'selected-area':''}}" src="../image/createbattle/{{awarditem.id}}.png" />
+              <view class="award-word-area">
+                <lable class="word  {{selectedAwardId==awarditem.id?'word-selected':''}}" >{{awarditem.name}}</lable>
+              </view>
+            </view>
+          </repeat>
+        </view>
+      </view> 
+    </view>
+    <form @submit="formSubmit" report-submit="true" >
+      <view class="operate-area">
+        <button class="createbattle-btn" formType="submit" open-type="getUserInfo"  @getuserinfo="getUserInfo"/>
+      </view>
+    </form>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Createbattle extends wepy.page {
+  config = {
+    navigationBarTitleText: '创建Battle'
+  }
+  onLoad() {
+    console.log('onLoad')
+    this.gameItem = this.$parent.globalData.currentPickGame
+    this.selectedTeamId = this.gameItem.hostId
+    this.isBusy = false
+  }
+
+  onShow() {
+    this.isBusy = false
+  }
+
+  postBattle(openid, gameid, teamid, award, word, self) {
+    if (self.isBusy) return
+    self.isBusy = true
+    wepy.request({
+      url: 'https://battle-api.algforce.com/wechat/battle/create',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        openId: openid,
+        gameId: gameid,
+        teamId: teamid,
+        award: award,
+        word: word
+      },
+      success: function (e) {
+        if (e.data.flag) {
+          wepy.showToast({
+            title: '创建成功',
+            icon: 'success',
+            duration: 2000
+          })
+          self.postTemplate(openid, e.data.data, self)
+          wepy.redirectTo({
+            url: 'battleinfo?bid=' + e.data.data
+          })
+        } else {
+          wepy.showToast({
+            title: '创建失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      complete: function (e) {
+        self.isBusy = false
+      }
+    })
+  }
+
+  postUserInfo(userInfo) {
+    var self = this
+    userInfo.openId = this.$parent.globalData.openId
+    wepy.request({
+      url: 'https://battle-api.algforce.com/wechat/userinfo/create',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: userInfo,
+      success: function (e) {
+        if (e.data.flag) {
+          if (e.data.data) {
+            self.postBattle(userInfo.openId, self.gameItem.id, self.selectedTeamId, self.selectedAwardId, '', self)
+          }
+        }
+      }
+    })
+  }
+
+  postTemplate(openid, bid, self) {
+    wepy.request({
+      url: 'https://battle-api.algforce.com/wechat/template',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        formId: self.formId,
+        openId: openid,
+        bizId: bid
+      },
+      success: function (e) {
+        console.info(e)
+      }
+    })
+  }
+
+  data = {
+    formId: null,
+    gameItem: null,
+    selectedTeamId: null,
+    selectedAwardId: '1',
+    isBusy: false,
+    awardList: [{ id: '1', name: '一罐啤酒' }, { id: '2', name: '一瓶汽水儿' }, { id: '3', name: '一根鸡腿儿' }, { id: '4', name: '一顿小龙虾' }, { id: '5', name: '一杯咖啡' }, { id: '6', name: '一杯奶茶' }]
+  }
+  methods = {
+    onShareAppMessage(res) {
+      if (res.from === 'button') {
+        // 来自页面内转发按钮
+        console.log(res.target)
+      }
+      let pathTemp = '/pages/index'
+      let titleTemp = '世界杯Battle大战,巅峰对决,立帖为证！'
+      return {
+        title: titleTemp,
+        path: pathTemp,
+        success: function (res) {
+          wepy.showToast({
+            title: '分享成功',
+            icon: 'success',
+            duration: 2000
+          })
+        },
+        fail: function (res) {
+          wepy.showToast({
+            title: '分享失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    },
+    formSubmit: function (e) {
+      console.log('form发生了submit事件，携带数据为：', e.detail.formId)
+      this.formId = e.detail.formId
+    },
+    getUserInfo(e) {
+      console.log(e.detail)
+      console.log(e.detail.userInfo)
+      console.log(e.detail.rawData)
+
+      this.postUserInfo(e.detail.userInfo)
+    },
+    teamSelected(e) {
+      this.selectedTeamId = e.currentTarget.dataset.teamid
+    },
+    selectedAward(e) {
+      console.info(e)
+      this.selectedAwardId = e.currentTarget.dataset.awardid
+    }
+  }
+}
+</script>

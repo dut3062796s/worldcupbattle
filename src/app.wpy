@@ -1,0 +1,74 @@
+<style lang="less">
+</style>
+
+<script>
+require('./utils/ald-stat.js')
+import wepy from 'wepy'
+
+export default class extends wepy.app {
+  config = {
+    pages: [
+      'pages/index',
+      'pages/createbattle',
+      'pages/battleinfo',
+      'pages/battlelist',
+      'pages/record',
+      'pages/mybattle'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: '#a9b7b7',
+      selectedColor: '#A40000',
+      list: [{
+        selectedIconPath: 'image/selected-index-icon.png',
+        iconPath: 'image/index-icon.png',
+        pagePath: 'pages/index',
+        text: 'Pick球赛'
+      }, {
+        selectedIconPath: 'image/selected-record-icon.png',
+        iconPath: 'image/record-icon.png',
+        pagePath: 'pages/record',
+        text: '荣耀榜'
+      }, {
+        selectedIconPath: 'image/selected-battle-icon.png',
+        iconPath: 'image/battle-icon.png',
+        pagePath: 'pages/mybattle',
+        text: '我的Battle'
+      }]
+    }
+  }
+
+  onLaunch() {
+    console.log('on launch')
+    wepy.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.writePhotosAlbum']) {
+          wepy.authorize({
+            scope: 'scope.writePhotosAlbum',
+            success() {
+              console.info('writePhotosAlbum')
+            }
+          })
+        }
+      }
+    })
+  }
+
+  onShow(options) {
+    console.log(options)
+    this.globalData.scene = options.scene
+  }
+
+  globalData = {
+    openId: null,
+    code: null,
+    currentPickGame: null,
+    scene: 0
+  }
+}
+</script>

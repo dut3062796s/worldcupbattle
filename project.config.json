@@ -1,0 +1,13 @@
+{
+  "description": "algforce battle",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram",
+  "appid": "wx087819b7a2e6ee62",
+  "projectname": "battle",
+  "miniprogramRoot": "./dist"
+}
