@@ -272,7 +272,7 @@ page {
                   <image class="win-host" wx:if="{{battleItem.status==2}}"  src="../image/mybattle/tie.png"/>
                   <image class="win-host" wx:if="{{battleItem.status==3}}"  src="../image/mybattle/lose.png"/>
                 </block>
-                <image class="person {{battleItem.hostUser==null?'hide':''}}" src="{{battleItem.hostUser.avatarUrl}}"></image>
+                <image class="person {{battleItem.hostUser==null?'hide':''}}" src="{{battleItem.hostUser.avatarUrl}}"/>
                 <image class="empty {{battleItem.hostUser==null?'':'hide'}}" src="../image/battleinfo/empty.png"/>
               </view>
               <view class="host-person-word-area">
