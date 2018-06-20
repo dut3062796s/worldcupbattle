@@ -1,7 +1,7 @@
 <style lang="less">
 page {
   height: 100%;
-  background-image: url('https://childrensday.algforce.com/image/battle/index/bg.jpg');
+  background-image: url('../image/index/bg.jpg');
   background-size: cover;
 }
 .container {
@@ -391,7 +391,7 @@ export default class BattleList extends wepy.page {
     }
     self.isBusy = true
     wepy.request({
-      url: 'https://battle-api.algforce.com/wechat/battle/gamebattle/page',
+      url: '***',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {

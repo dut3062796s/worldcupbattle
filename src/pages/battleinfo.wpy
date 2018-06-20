@@ -1,7 +1,7 @@
 <style lang="less">
 page {
   height: 100%;
-  background-image: url('https://childrensday.algforce.com/image/battle/index/bg.jpg');
+  background-image: url('../image/index/bg.jpg');
   background-size: cover;
 }
 .container {
@@ -188,7 +188,7 @@ page {
 .receivebattle-btn {
   width: 326rpx;
   height: 86rpx;
-  background-image: url('https://childrensday.algforce.com/image/battle/battleinfo/receivebattle-btn.png');
+  background-image: url('../image/battleinfo/receivebattle-btn.png');
   border: 0;
   background-size: cover;
   background-color: transparent;
@@ -196,7 +196,7 @@ page {
 .wantbattle-btn {
   width: 326rpx;
   height: 86rpx;
-  background-image: url('https://childrensday.algforce.com/image/battle/battleinfo/wantbattle-btn.png');
+  background-image: url('../image/battleinfo/wantbattle-btn.png');
   border: 0;
   background-size: cover;
   background-color: transparent;
@@ -204,7 +204,7 @@ page {
 .find-btn {
   width: 326rpx;
   height: 86rpx;
-  background-image: url('https://childrensday.algforce.com/image/battle/battleinfo/find-btn.png');
+  background-image: url('../image/battleinfo/find-btn.png');
   border: 0;
   background-size: cover;
   background-color: transparent;
@@ -245,7 +245,7 @@ page {
   background-repeat: no-repeat;
   background-size: contain;
   background-color: transparent;
-  background-image: url('https://childrensday.algforce.com/image/worldcup/friend.png');
+  background-image: url('../image/worldcup/friend.png');
 }
 
 .shareline {
@@ -256,7 +256,7 @@ page {
   background-repeat: no-repeat;
   background-size: contain;
   background-color: transparent;
-  background-image: url('https://childrensday.algforce.com/image/worldcup/shareline.png');
+  background-image: url('../image/worldcup/shareline.png');
 }
 
 .newbattlebtn {
@@ -267,7 +267,7 @@ page {
   background-repeat: no-repeat;
   background-size: contain;
   background-color: transparent;
-  background-image: url('https://childrensday.algforce.com/image/battle/battleinfo/newbattle-btn.png');
+  background-image: url('../image/battleinfo/newbattle-btn.png');
 }
 
 .qrcode-cotent {
@@ -528,7 +528,7 @@ export default class Battleinfo extends wepy.page {
       success: function (res) {
         if (res.code) {
           wepy.request({
-            url: 'https://battle-api.algforce.com/wechat/user/login',
+            url: '***',
             data: {
               code: res.code
             },
@@ -564,7 +564,7 @@ export default class Battleinfo extends wepy.page {
   getBattleInfo() {
     var self = this
     wepy.request({
-      url: 'https://battle-api.algforce.com/wechat/battle/' + this.bid,
+      url: '***' + this.bid,
       success: function (e) {
         if (e.data.flag) {
           self.battleItem = e.data.data
@@ -584,7 +584,7 @@ export default class Battleinfo extends wepy.page {
     if (self.isBusy) return
     self.isBusy = true
     wepy.request({
-      url: 'https://battle-api.algforce.com/wechat/battle/receive',
+      url: '***',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
@@ -623,7 +623,7 @@ export default class Battleinfo extends wepy.page {
     var self = this
     userInfo.openId = this.$parent.globalData.openId
     wepy.request({
-      url: 'https://battle-api.algforce.com/wechat/userinfo/create',
+      url: '***',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: userInfo,
@@ -723,7 +723,7 @@ export default class Battleinfo extends wepy.page {
 
   postTemplate(formid, openid, bid, self) {
     wepy.request({
-      url: 'https://battle-api.algforce.com/wechat/template',
+      url: '***',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {

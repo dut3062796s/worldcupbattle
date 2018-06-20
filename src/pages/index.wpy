@@ -1,7 +1,7 @@
 <style lang="less">
 page {
   height: 100%;
-  background-image: url('https://childrensday.algforce.com/image/battle/index/bg.jpg');
+  background-image: url('../image/index/bg.jpg');
   background-size: cover;
 }
 .container {
@@ -114,7 +114,7 @@ page {
 .battle-btn {
   width: 144rpx;
   height: 62rpx;
-  // background-image: url('https://childrensday.algforce.com/image/battle/index/battle-btn.png');
+  // background-image: url('../image/index/battle-btn.png');
   border: 0;
   background-size: cover;
   border-color: white;
@@ -122,7 +122,7 @@ page {
 .battle-over-btn {
   width: 132rpx;
   height: 60rpx;
-  // background-image: url('https://childrensday.algforce.com/image/battle/index/battle-over-btn.png');
+  // background-image: url('../image/index/battle-over-btn.png');
   border: 0;
   background-size: cover;
   border-color: white;
@@ -130,7 +130,7 @@ page {
 .game-coming-btn {
   width: 110rpx;
   height: 31rpx;
-  // background-image: url('https://childrensday.algforce.com/image/battle/index/game-coming-btn.png');
+  // background-image: url('../image/index/game-coming-btn.png');
   border: 0;
   background-size: cover;
   border-color: white;
@@ -138,7 +138,7 @@ page {
 .game-over-btn {
   width: 144rpx;
   height: 31rpx;
-  // background-image: url('https://childrensday.algforce.com/image/battle/index/game-over-btn.png');
+  // background-image: url('../image/index/game-over-btn.png');
   border: 0;
   background-size: cover;
   border-color: white;
@@ -146,7 +146,7 @@ page {
 .has-battle-btn {
   width: 163rpx;
   height: 32rpx;
-  // background-image: url('https://childrensday.algforce.com/image/battle/index/hasbattle-btn.png');
+  // background-image: url('../image/index/hasbattle-btn.png');
   border: 0;
   background-size: cover;
   border-color: white;
@@ -238,7 +238,7 @@ export default class Index extends wepy.page {
       success: function (res) {
         if (res.code) {
           wepy.request({
-            url: 'https://battle-api.algforce.com/wechat/user/login',
+            url: '***',
             data: {
               code: res.code
             },
@@ -280,7 +280,7 @@ export default class Index extends wepy.page {
     }
     self.isBusy = true
     wepy.request({
-      url: 'https://battle-api.algforce.com/wechat/game/page',
+      url: '***',
       data: {
         openId: self.$parent.globalData.openId,
         page: page,
