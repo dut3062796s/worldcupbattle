@@ -1,7 +1,7 @@
-# worldcup-battle
+# 球迷Battle赛
 
 #### 项目介绍
-幽孚科技  球迷Battle赛  
+幽孚科技  球迷Battle赛  wepy项目 欢迎交流讨论
 2018年俄罗斯世界杯，看赛程、猜输赢、战老铁、球迷Battle，一触即发！
  
 #### 项目截图
@@ -13,3 +13,7 @@
 
 #### 小程序二维码
 <img src="https://raw.githubusercontent.com/zenofzhen/worldcupbattle/dev/src/image/qrcode.jpg" />
+
+#### wepy参考地址
+https://tencent.github.io/wepy/
+
